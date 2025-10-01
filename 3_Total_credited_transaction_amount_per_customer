@@ -1,4 +1,4 @@
--- 3. Find the total credited amount for each customer.
+-- 3. Find the total credited transaction amount for each customer.
 
 WITH summary as (
   SELECT 
