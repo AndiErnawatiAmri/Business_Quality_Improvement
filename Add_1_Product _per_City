@@ -1,0 +1,19 @@
+ with customer_loan as (
+  select
+  *,
+  case when status = "Ongoing" then "Y" else "N" end as loan_flag
+  from `psyched-choir-300805.latihan.Jago_Customer` C
+  left join `psyched-choir-300805.latihan.Jago_Loans` L
+  using (customer_id)
+ )
+ 
+  SELECT 
+    city,
+    SUM(case when account_type = "Savings" then 1 else 0 end) as count_saving,
+    SUM(case when account_type = "Current" then 1 else 0 end) as count_curent,
+    SUM(case when loan_flag = "Y" then 1 else 0 end) as count_loan,
+  FROM `psyched-choir-300805.latihan.Jago_Active` A
+  left join customer_loan C
+    using (customer_id)
+    group by city
+
