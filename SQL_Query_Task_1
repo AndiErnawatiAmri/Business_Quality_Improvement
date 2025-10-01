@@ -1,0 +1,11 @@
+  -- 1. Customer Account Balance > $10.000
+  SELECT 
+    account_id,
+    status as account_status,
+    name,
+    account_type,
+    balance
+  FROM `psyched-choir-300805.latihan.Jago_Active` A
+    left join `psyched-choir-300805.latihan.Jago_Customer` C
+    using (customer_id)
+    order by balance desc
