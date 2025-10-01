@@ -1,0 +1,30 @@
+-- 5. Find accounts with no transactions in 2023.
+WITH summary as (
+  SELECT 
+  account_id,
+  customer_id,
+  name,
+  account_type,
+  account_open_date,
+  status,
+  balance
+  FROM `psyched-choir-300805.latihan.Jago_Active` A
+  left join
+  `psyched-choir-300805.latihan.Jago_Customer` C
+  using (customer_id)
+),
+
+transaction as (
+  SELECT
+  account_id,
+  count(*) as total_transaction
+  FROM `psyched-choir-300805.latihan.Jago_Transaction` as T
+  group by account_id
+)
+
+select 
+  *
+from summary
+left join transaction
+using (account_id)
+where total_transaction is null
