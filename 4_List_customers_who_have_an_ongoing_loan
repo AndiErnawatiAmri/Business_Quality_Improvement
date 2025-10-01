@@ -1,0 +1,13 @@
+--  4. List customers who have an ongoing loan.
+ SELECT 
+    customer_id,
+    name,
+    city,
+    account_type,
+    loan_id,
+    loan_amount,
+    L.status as loan_status
+  FROM `psyched-choir-300805.latihan.Jago_Customer` C
+  right join `psyched-choir-300805.latihan.Jago_Loans` L
+    using (customer_id)
+    where status = "Ongoing"
