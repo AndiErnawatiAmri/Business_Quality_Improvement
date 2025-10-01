@@ -1,0 +1,12 @@
+-- 6. Identify the top 3 customers by total balance.
+  SELECT 
+    account_id,
+    A.status as account_status,
+    customer_id,
+    name,
+    balance
+  FROM `psyched-choir-300805.latihan.Jago_Active` A
+  left join `psyched-choir-300805.latihan.Jago_Customer` C
+    using (customer_id)
+    order by balance desc
+    Limit 3
