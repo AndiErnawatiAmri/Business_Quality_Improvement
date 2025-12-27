@@ -1,0 +1,20 @@
+WITH Loan as (
+select
+SUM(loan_amount) as total_loan,
+FROM `psyched-choir-300805.latihan.Jago_Loans` L
+where L.status = "Ongoing"
+),
+
+account as (
+  select
+SUM(balance) as total_deposit,
+FROM `psyched-choir-300805.latihan.Jago_Active` A
+)
+
+Select
+total_loan,
+total_deposit,
+ROUND(100*Loan.total_loan/account.total_deposit,2) as LDR
+from
+Loan
+cross join account

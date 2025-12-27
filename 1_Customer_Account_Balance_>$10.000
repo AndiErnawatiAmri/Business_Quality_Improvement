@@ -8,4 +8,5 @@
   FROM `psyched-choir-300805.latihan.Jago_Active` A
     left join `psyched-choir-300805.latihan.Jago_Customer` C
     using (customer_id)
+    where balance > 10000
     order by balance desc

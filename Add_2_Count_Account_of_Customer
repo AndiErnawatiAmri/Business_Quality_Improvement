@@ -1,0 +1,8 @@
+  SELECT 
+    C.customer_id,
+    C.name,
+    count (distinct account_id) as count_account
+  FROM `psyched-choir-300805.latihan.Jago_Active` A
+  right join `psyched-choir-300805.latihan.Jago_Customer` C
+    using (customer_id)
+    group by C.name, C.customer_id
